@@ -1,67 +1,40 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout";
-import { 
-  Eye, 
-  MessageSquare, 
-  AudioLines, 
-  Bot,
-  ArrowRight,
-  CheckCircle2
-} from "lucide-react";
-
-const capabilities = [
-  {
-    icon: Eye,
-    title: "Computer Vision",
-    description: "Visual perception systems for surveillance, inspection, and robotics applications.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Text & Language Processing",
-    description: "Document processing, intelligent assistants, and semantic search solutions.",
-  },
-  {
-    icon: AudioLines,
-    title: "Audio & Sound Analytics",
-    description: "Speech recognition, audio classification, and sound event detection.",
-  },
-  {
-    icon: Bot,
-    title: "Robotics & Intelligent Systems",
-    description: "Perception, navigation, and sensor fusion for autonomous systems.",
-  },
-];
-
-const whatWeDo = [
-  "Custom AI Product Development",
-  "AI System Design & Architecture",
-  "Model Development, Optimization & Deployment",
-  "End-to-End AI Engineering Support",
-];
-
-const whyUs = [
-  {
-    title: "Business-driven AI solutions",
-    description: "We focus on solving real business problems, not chasing technology trends.",
-  },
-  {
-    title: "Custom-built systems",
-    description: "Every solution is tailored to your specific needs and operational context.",
-  },
-  {
-    title: "Production-ready engineering",
-    description: "Our systems are built for reliability, scalability, and real-world deployment.",
-  },
-  {
-    title: "Flexible engagement models",
-    description: "From consulting to full product development, we adapt to your needs.",
-  },
-];
-
+import { Eye, MessageSquare, AudioLines, Bot, ArrowRight, CheckCircle2 } from "lucide-react";
+const capabilities = [{
+  icon: Eye,
+  title: "Computer Vision",
+  description: "Visual perception systems for surveillance, inspection, and robotics applications."
+}, {
+  icon: MessageSquare,
+  title: "Text & Language Processing",
+  description: "Document processing, intelligent assistants, and semantic search solutions."
+}, {
+  icon: AudioLines,
+  title: "Audio & Sound Analytics",
+  description: "Speech recognition, audio classification, and sound event detection."
+}, {
+  icon: Bot,
+  title: "Robotics & Intelligent Systems",
+  description: "Perception, navigation, and sensor fusion for autonomous systems."
+}];
+const whatWeDo = ["Custom AI Product Development", "AI System Design & Architecture", "Model Development, Optimization & Deployment", "End-to-End AI Engineering Support"];
+const whyUs = [{
+  title: "Business-driven AI solutions",
+  description: "We focus on solving real business problems, not chasing technology trends."
+}, {
+  title: "Custom-built systems",
+  description: "Every solution is tailored to your specific needs and operational context."
+}, {
+  title: "Production-ready engineering",
+  description: "Our systems are built for reliability, scalability, and real-world deployment."
+}, {
+  title: "Flexible engagement models",
+  description: "From consulting to full product development, we adapt to your needs."
+}];
 export default function HomePage() {
-  return (
-    <Layout>
+  return <Layout>
       {/* Hero Section */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
@@ -118,25 +91,18 @@ export default function HomePage() {
                 product development, ensuring every solution is built for real-world impact.
               </p>
               <ul className="space-y-4">
-                {whatWeDo.map((item, index) => (
-                  <li key={index} className="flex items-center gap-3">
+                {whatWeDo.map((item, index) => <li key={index} className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
                     <span className="text-lg">{item}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {capabilities.map((cap, index) => (
-                <div
-                  key={index}
-                  className="p-6 rounded-xl bg-secondary/50 border border-border hover:border-primary/30 transition-colors"
-                >
+              {capabilities.map((cap, index) => <div key={index} className="p-6 rounded-xl bg-secondary/50 border border-border hover:border-primary/30 transition-colors">
                   <cap.icon className="h-8 w-8 text-primary mb-4" />
                   <h3 className="font-semibold mb-2">{cap.title}</h3>
                   <p className="text-sm text-muted-foreground">{cap.description}</p>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -155,15 +121,10 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyUs.map((item, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-xl card-gradient border border-border"
-              >
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
-              </div>
-            ))}
+            {whyUs.map((item, index) => <div key={index} className="p-6 rounded-xl card-gradient border border-border bg-primary text-primary-foreground">
+                <h3 className="font-semibold mb-2 text-primary-foreground">{item.title}</h3>
+                <p className="text-sm bg-muted-foreground text-primary-foreground">{item.description}</p>
+              </div>)}
           </div>
         </div>
       </section>
@@ -184,6 +145,5 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
