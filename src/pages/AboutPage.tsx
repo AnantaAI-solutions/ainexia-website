@@ -64,7 +64,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section-padding text-muted-foreground">
+      <section className="section-padding text-primary-foreground">
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-8 rounded-xl card-gradient border border-border">
