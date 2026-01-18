@@ -1,62 +1,43 @@
 import { Layout } from "@/components/layout";
-import {
-  Brain,
-  Eye,
-  MessageSquare,
-  Bot,
-  Cloud,
-  Database,
-  GitBranch,
-} from "lucide-react";
-
-const techCategories = [
-  {
-    icon: Brain,
-    title: "AI & Machine Learning",
-    description: "Core frameworks and libraries for building intelligent systems.",
-    technologies: ["PyTorch", "TensorFlow", "Scikit-learn", "ONNX", "JAX"],
-  },
-  {
-    icon: Eye,
-    title: "Computer Vision",
-    description: "Tools for visual perception and image processing.",
-    technologies: ["OpenCV", "CUDA", "YOLO", "Detectron2", "TensorRT"],
-  },
-  {
-    icon: MessageSquare,
-    title: "NLP & Language Models",
-    description: "Technologies for natural language understanding.",
-    technologies: ["Transformers", "Hugging Face", "LangChain", "Vector Databases", "SpaCy"],
-  },
-  {
-    icon: Bot,
-    title: "Robotics",
-    description: "Frameworks for autonomous system development.",
-    technologies: ["ROS / ROS2", "Sensor Fusion", "SLAM", "Motion Planning", "Gazebo"],
-  },
-  {
-    icon: Cloud,
-    title: "Deployment & Infrastructure",
-    description: "Cloud and containerization technologies.",
-    technologies: ["Docker", "Kubernetes", "AWS", "Azure", "GCP"],
-  },
-  {
-    icon: Database,
-    title: "Data & Streaming",
-    description: "Data processing and storage solutions.",
-    technologies: ["Apache Kafka", "MongoDB", "PostgreSQL", "Redis", "Apache Spark"],
-  },
-  {
-    icon: GitBranch,
-    title: "MLOps",
-    description: "Tools for ML lifecycle management.",
-    technologies: ["MLflow", "DVC", "CI/CD Pipelines", "Model Monitoring", "A/B Testing"],
-  },
-];
-
+import { Brain, Eye, MessageSquare, Bot, Cloud, Database, GitBranch } from "lucide-react";
+const techCategories = [{
+  icon: Brain,
+  title: "AI & Machine Learning",
+  description: "Core frameworks and libraries for building intelligent systems.",
+  technologies: ["PyTorch", "TensorFlow", "Scikit-learn", "ONNX", "JAX"]
+}, {
+  icon: Eye,
+  title: "Computer Vision",
+  description: "Tools for visual perception and image processing.",
+  technologies: ["OpenCV", "CUDA", "YOLO", "Detectron2", "TensorRT"]
+}, {
+  icon: MessageSquare,
+  title: "NLP & Language Models",
+  description: "Technologies for natural language understanding.",
+  technologies: ["Transformers", "Hugging Face", "LangChain", "Vector Databases", "SpaCy"]
+}, {
+  icon: Bot,
+  title: "Robotics",
+  description: "Frameworks for autonomous system development.",
+  technologies: ["ROS / ROS2", "Sensor Fusion", "SLAM", "Motion Planning", "Gazebo"]
+}, {
+  icon: Cloud,
+  title: "Deployment & Infrastructure",
+  description: "Cloud and containerization technologies.",
+  technologies: ["Docker", "Kubernetes", "AWS", "Azure", "GCP"]
+}, {
+  icon: Database,
+  title: "Data & Streaming",
+  description: "Data processing and storage solutions.",
+  technologies: ["Apache Kafka", "MongoDB", "PostgreSQL", "Redis", "Apache Spark"]
+}, {
+  icon: GitBranch,
+  title: "MLOps",
+  description: "Tools for ML lifecycle management.",
+  technologies: ["MLflow", "DVC", "CI/CD Pipelines", "Model Monitoring", "A/B Testing"]
+}];
 export default function TechnologiesPage() {
-  return (
-    <Layout>
+  return <Layout>
       {/* Hero */}
       <section className="section-padding">
         <div className="section-container">
@@ -77,11 +58,7 @@ export default function TechnologiesPage() {
       <section className="section-padding bg-card border-y border-border">
         <div className="section-container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {techCategories.map((category, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-xl bg-background border border-border hover:border-primary/30 transition-colors"
-              >
+            {techCategories.map((category, index) => <div key={index} className="p-6 rounded-xl bg-background border border-border hover:border-primary/30 transition-colors">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <category.icon className="h-6 w-6 text-primary" />
                 </div>
@@ -90,17 +67,11 @@ export default function TechnologiesPage() {
                   {category.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {category.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-2.5 py-1 rounded-md bg-secondary text-xs border border-border"
-                    >
+                  {category.technologies.map((tech, i) => <span key={i} className="px-2.5 py-1 rounded-md bg-secondary text-xs border border-border">
                       {tech}
-                    </span>
-                  ))}
+                    </span>)}
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -110,7 +81,7 @@ export default function TechnologiesPage() {
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center">
             <div className="p-8 rounded-xl card-gradient border border-border">
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-primary-foreground">
                 <span className="text-foreground font-medium">Note:</span>{" "}
                 Technology choices are driven by project requirements, scalability needs, 
                 and deployment constraints. We select the right tools for each unique challenge, 
@@ -120,6 +91,5 @@ export default function TechnologiesPage() {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
