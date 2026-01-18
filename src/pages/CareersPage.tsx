@@ -1,42 +1,23 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import {
-  Lightbulb,
-  Globe,
-  BookOpen,
-  ArrowRight,
-  Mail,
-} from "lucide-react";
-
-const culture = [
-  {
-    icon: Lightbulb,
-    title: "Innovation-driven",
-    description: "We encourage experimentation and creative problem-solving.",
-  },
-  {
-    icon: Globe,
-    title: "Flexible & Remote-friendly",
-    description: "Work from anywhere with a focus on outcomes, not hours.",
-  },
-  {
-    icon: BookOpen,
-    title: "Learning-focused",
-    description: "Continuous growth through challenging projects and mentorship.",
-  },
-];
-
-const futureRoles = [
-  "AI / ML Engineers",
-  "Computer Vision Engineers",
-  "Robotics Engineers",
-  "Software Engineers",
-];
-
+import { Lightbulb, Globe, BookOpen, ArrowRight, Mail } from "lucide-react";
+const culture = [{
+  icon: Lightbulb,
+  title: "Innovation-driven",
+  description: "We encourage experimentation and creative problem-solving."
+}, {
+  icon: Globe,
+  title: "Flexible & Remote-friendly",
+  description: "Work from anywhere with a focus on outcomes, not hours."
+}, {
+  icon: BookOpen,
+  title: "Learning-focused",
+  description: "Continuous growth through challenging projects and mentorship."
+}];
+const futureRoles = ["AI / ML Engineers", "Computer Vision Engineers", "Robotics Engineers", "Software Engineers"];
 export default function CareersPage() {
-  return (
-    <Layout>
+  return <Layout>
       {/* Hero */}
       <section className="section-padding">
         <div className="section-container">
@@ -63,15 +44,13 @@ export default function CareersPage() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {culture.map((item, index) => (
-              <div key={index} className="text-center">
+            {culture.map((item, index) => <div key={index} className="text-center">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <item.icon className="h-7 w-7 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                 <p className="text-muted-foreground">{item.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -87,14 +66,9 @@ export default function CareersPage() {
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
-              {futureRoles.map((role, index) => (
-                <div
-                  key={index}
-                  className="p-5 rounded-xl card-gradient border border-border text-center"
-                >
-                  <span className="font-medium">{role}</span>
-                </div>
-              ))}
+              {futureRoles.map((role, index) => <div key={index} className="p-5 rounded-xl card-gradient border border-border text-center">
+                  <span className="font-medium text-primary-foreground">{role}</span>
+                </div>)}
             </div>
           </div>
         </div>
@@ -119,6 +93,5 @@ export default function CareersPage() {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
