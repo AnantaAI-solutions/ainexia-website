@@ -5,41 +5,42 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { MapPin, Mail, ArrowRight } from "lucide-react";
-
 export default function ContactPage() {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
-    message: "",
+    message: ""
   });
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
+    await new Promise(resolve => setTimeout(resolve, 1000));
     toast({
       title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
+      description: "We'll get back to you as soon as possible."
     });
-
-    setFormData({ name: "", email: "", company: "", message: "" });
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      message: ""
+    });
     setIsSubmitting(false);
   };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
-
-  return (
-    <Layout>
+  return <Layout>
       {/* Hero */}
       <section className="section-padding">
         <div className="section-container">
@@ -82,10 +83,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a
-                      href="mailto:contact@anantaai.com"
-                      className="text-primary hover:underline"
-                    >
+                    <a href="mailto:contact@anantaai.com" className="text-primary hover:underline">
                       contact@anantaai.com
                     </a>
                   </div>
@@ -93,8 +91,8 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-12 p-6 rounded-xl card-gradient border border-border">
-                <h3 className="font-semibold mb-2">Ready to Start?</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-semibold mb-2 text-primary">Ready to Start?</h3>
+                <p className="text-sm text-primary-foreground">
                   Fill out the form and our team will get back to you within 
                   24-48 hours to discuss your project.
                 </p>
@@ -109,76 +107,36 @@ export default function ContactPage() {
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name *
                   </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your name"
-                  />
+                  <Input id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
                     Email *
                   </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="you@company.com"
-                  />
+                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="you@company.com" />
                 </div>
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium mb-2">
                     Company
                   </label>
-                  <Input
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Your company name"
-                  />
+                  <Input id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your company name" />
                 </div>
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
                     Message *
                   </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    placeholder="Tell us about your project or inquiry..."
-                  />
+                  <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="Tell us about your project or inquiry..." />
                 </div>
-                <Button
-                  type="submit"
-                  variant="hero"
-                  size="lg"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
+                <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : <>
                       Send Message
                       <ArrowRight className="ml-2 h-4 w-4" />
-                    </>
-                  )}
+                    </>}
                 </Button>
               </form>
             </div>
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
