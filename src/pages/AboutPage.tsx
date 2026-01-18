@@ -1,27 +1,20 @@
 import { Layout } from "@/components/layout";
 import { Target, Eye, Heart, Users } from "lucide-react";
-
-const values = [
-  {
-    icon: Target,
-    title: "Innovation",
-    description: "Continuously exploring new approaches to solve complex AI challenges.",
-  },
-  {
-    icon: Eye,
-    title: "Engineering Excellence",
-    description: "Building robust, scalable systems with attention to detail.",
-  },
-  {
-    icon: Heart,
-    title: "Practical AI Over Hype",
-    description: "Focusing on real-world applicability rather than buzzwords.",
-  },
-];
-
+const values = [{
+  icon: Target,
+  title: "Innovation",
+  description: "Continuously exploring new approaches to solve complex AI challenges."
+}, {
+  icon: Eye,
+  title: "Engineering Excellence",
+  description: "Building robust, scalable systems with attention to detail."
+}, {
+  icon: Heart,
+  title: "Practical AI Over Hype",
+  description: "Focusing on real-world applicability rather than buzzwords."
+}];
 export default function AboutPage() {
-  return (
-    <Layout>
+  return <Layout>
       {/* Hero */}
       <section className="section-padding">
         <div className="section-container">
@@ -75,7 +68,7 @@ export default function AboutPage() {
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-8 rounded-xl card-gradient border border-border">
-              <h3 className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-medium uppercase tracking-wider mb-4 text-primary-foreground">
                 Mission
               </h3>
               <p className="text-xl leading-relaxed">
@@ -106,15 +99,13 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="text-center">
+            {values.map((value, index) => <div key={index} className="text-center">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <value.icon className="h-7 w-7 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
                 <p className="text-muted-foreground">{value.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -134,6 +125,5 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>;
 }
