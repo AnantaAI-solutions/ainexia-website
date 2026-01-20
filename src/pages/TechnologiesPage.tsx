@@ -80,8 +80,8 @@ export default function TechnologiesPage() {
       <section className="section-padding">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="p-8 rounded-xl card-gradient border border-border">
-              <p className="text-lg text-primary-foreground">
+            <div className="p-8 rounded-xl bg-secondary/50 border border-border">
+              <p className="text-lg text-muted-foreground">
                 <span className="text-foreground font-medium">Note:</span>{" "}
                 Technology choices are driven by project requirements, scalability needs, 
                 and deployment constraints. We select the right tools for each unique challenge, 

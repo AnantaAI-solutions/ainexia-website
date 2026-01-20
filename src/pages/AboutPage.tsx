@@ -64,11 +64,11 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="section-padding text-primary-foreground">
+      <section className="section-padding">
         <div className="section-container">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-xl card-gradient border border-border">
-              <h3 className="text-sm font-medium uppercase tracking-wider mb-4 text-primary-foreground">
+            <div className="p-8 rounded-xl bg-secondary/50 border border-border">
+              <h3 className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
                 Mission
               </h3>
               <p className="text-xl leading-relaxed">
@@ -76,7 +76,7 @@ export default function AboutPage() {
                 engineering excellence, and real-world practicality.
               </p>
             </div>
-            <div className="p-8 rounded-xl card-gradient border border-border">
+            <div className="p-8 rounded-xl bg-secondary/50 border border-border">
               <h3 className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
                 Vision
               </h3>
