@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const navigation = {
   company: [
@@ -25,9 +26,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">A</span>
-              </div>
+              <img src={logo} alt="AnantaAI Logo" className="h-8 w-auto" />
               <span className="font-semibold text-lg">AnantaAI</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
