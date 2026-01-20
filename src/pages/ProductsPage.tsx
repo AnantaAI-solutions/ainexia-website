@@ -95,10 +95,10 @@ export default function ProductsPage() {
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
-              {philosophy.map((item, index) => <div key={index} className="p-5 rounded-xl card-gradient border border-border">
+              {philosophy.map((item, index) => <div key={index} className="p-5 rounded-xl bg-secondary/50 border border-border hover:border-primary/30 transition-colors">
                   <item.icon className="h-6 w-6 text-primary mb-3" />
-                  <h3 className="font-semibold mb-1 text-primary">{item.title}</h3>
-                  <p className="text-sm text-primary-foreground">{item.description}</p>
+                  <h3 className="font-semibold mb-1">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>)}
             </div>
           </div>

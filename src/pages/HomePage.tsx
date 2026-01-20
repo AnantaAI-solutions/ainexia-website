@@ -121,9 +121,9 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyUs.map((item, index) => <div key={index} className="p-6 rounded-xl card-gradient border border-border text-primary-foreground bg-[#18bf6b]">
-                <h3 className="font-semibold mb-2 text-primary-foreground">{item.title}</h3>
-                <p className="text-sm text-primary-foreground bg-[sidebar-primary-foreground] bg-slate-900">{item.description}</p>
+            {whyUs.map((item, index) => <div key={index} className="p-6 rounded-xl bg-secondary/50 border border-border hover:border-primary/30 transition-colors">
+                <h3 className="font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>)}
           </div>
         </div>

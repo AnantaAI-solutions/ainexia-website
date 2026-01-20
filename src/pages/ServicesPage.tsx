@@ -80,7 +80,7 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            {capabilities.map((cap, index) => <div key={index} className="p-8 rounded-xl card-gradient border border-border hover:border-primary/30 transition-colors text-primary">
+            {capabilities.map((cap, index) => <div key={index} className="p-8 rounded-xl bg-secondary/50 border border-border hover:border-primary/30 transition-colors">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <cap.icon className="h-6 w-6 text-primary" />
@@ -91,7 +91,7 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <ul className="grid grid-cols-2 gap-2">
-                  {cap.useCases.map((useCase, i) => <li key={i} className="flex items-center gap-2 text-sm text-primary-foreground">
+                  {cap.useCases.map((useCase, i) => <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <div className="w-1 h-1 rounded-full bg-primary" />
                       {useCase}
                     </li>)}
