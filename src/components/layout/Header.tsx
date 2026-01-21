@@ -33,9 +33,9 @@ export function Header() {
   const location = useLocation();
   return <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <nav className="section-container flex items-center justify-between py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="AnantaAI Logo" className="h-8 w-auto shadow-none" />
-          <span className="font-semibold text-lg">AnantaAI</span>
+        <Link to="/" className="flex items-center gap-3">
+          <img src={logo} alt="AnantaAI Logo" className="h-10 w-auto shadow-none" />
+          <span className="font-bold text-xl">AnantaAI</span>
         </Link>
 
         {/* Desktop Navigation */}
