@@ -118,7 +118,7 @@ export default function ServicesPage() {
               </Button>
             </div>
             <div className="flex flex-wrap gap-3">
-              {industries.map((industry, index) => <span key={index} className="px-4 py-2 rounded-full bg-secondary text-sm border border-border">
+              {industries.map((industry, index) => <span key={index} className="px-4 py-2 rounded-full bg-secondary/50 text-sm text-foreground border border-border">
                   {industry}
                 </span>)}
             </div>
