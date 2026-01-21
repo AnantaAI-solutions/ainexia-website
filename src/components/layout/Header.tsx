@@ -35,7 +35,7 @@ export function Header() {
       <nav className="section-container flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="AnantaAI Logo" className="h-10 w-auto shadow-none" />
-          <span className="font-bold text-xl">AnantaAI</span>
+          <span className="font-bold text-xl text-primary">AnantaAI Solutions</span>
         </Link>
 
         {/* Desktop Navigation */}
