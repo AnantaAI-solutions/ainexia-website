@@ -67,7 +67,7 @@ export default function TechnologiesPage() {
                   {category.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {category.technologies.map((tech, i) => <span key={i} className="px-2.5 py-1 rounded-md bg-secondary text-xs border border-border">
+                  {category.technologies.map((tech, i) => <span key={i} className="px-2.5 py-1 rounded-md bg-secondary/70 text-xs text-foreground border border-border">
                       {tech}
                     </span>)}
                 </div>
