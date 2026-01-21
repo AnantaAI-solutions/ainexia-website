@@ -90,9 +90,9 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-12 p-6 rounded-xl card-gradient border border-border">
+              <div className="mt-12 p-6 rounded-xl bg-primary/10 border border-primary/20">
                 <h3 className="font-semibold mb-2 text-primary">Ready to Start?</h3>
-                <p className="text-sm text-primary-foreground">
+                <p className="text-sm text-foreground">
                   Fill out the form and our team will get back to you within 
                   24-48 hours to discuss your project.
                 </p>

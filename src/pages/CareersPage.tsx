@@ -66,8 +66,8 @@ export default function CareersPage() {
               </p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
-              {futureRoles.map((role, index) => <div key={index} className="p-5 rounded-xl card-gradient border border-border text-center">
-                  <span className="font-medium text-primary-foreground">{role}</span>
+              {futureRoles.map((role, index) => <div key={index} className="p-5 rounded-xl bg-primary/10 border border-primary/20 text-center">
+                  <span className="font-medium text-foreground">{role}</span>
                 </div>)}
             </div>
           </div>
