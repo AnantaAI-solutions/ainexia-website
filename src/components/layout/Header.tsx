@@ -32,20 +32,20 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   return <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
-      <nav className="section-container flex items-center py-4">
+      <nav className="section-container flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="AnantaAI Logo" className="h-10 w-auto shadow-none" />
           <span className="font-bold text-xl">AnantaAI</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-1 ml-8">
+        <div className="hidden lg:flex items-center gap-1">
           {navigation.map(item => <Link key={item.name} to={item.href} className={`px-3 py-2 text-sm rounded-md transition-colors ${location.pathname === item.href ? "text-foreground bg-secondary" : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"}`}>
               {item.name}
             </Link>)}
         </div>
 
-        <div className="hidden lg:block ml-auto">
+        <div className="hidden lg:block">
           <Button variant="hero" size="sm" asChild>
             <Link to="/contact">Start Your AI Project</Link>
           </Button>
