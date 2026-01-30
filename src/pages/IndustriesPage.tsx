@@ -78,10 +78,13 @@ export default function IndustriesPage() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-padding">
-        <div className="section-container">
+      <section className="relative section-padding overflow-hidden">
+        <div className="absolute inset-0 hero-glow" />
+        <div className="absolute inset-0 mesh-gradient opacity-50" />
+        
+        <div className="section-container relative">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
               <span className="gradient-text">Industries</span> & Use Cases
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed animate-fade-in-delay-1">
@@ -93,30 +96,34 @@ export default function IndustriesPage() {
       </section>
 
       {/* Industries Grid */}
-      <section className="section-padding bg-card border-y border-border">
-        <div className="section-container">
+      <section className="section-padding relative">
+        <div className="absolute inset-0 bg-card/50" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        
+        <div className="section-container relative">
           <div className="grid md:grid-cols-2 gap-8">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="p-8 rounded-xl bg-background border border-border hover:border-primary/30 transition-colors"
+                className="group p-8 rounded-xl bg-secondary/20 border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-[0_0_40px_-10px_hsl(199_89%_48%/0.3)]"
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <industry.icon className="h-6 w-6 text-primary" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <industry.icon className="h-7 w-7 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-2">{industry.title}</h3>
                     <p className="text-muted-foreground">{industry.description}</p>
                   </div>
                 </div>
-                <div className="border-t border-border pt-4">
+                <div className="border-t border-border/50 pt-4">
                   <h4 className="text-sm font-medium text-muted-foreground mb-3">
                     Example Use Cases
                   </h4>
                   <ul className="space-y-2">
                     {industry.useCases.map((useCase, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm">
+                      <li key={i} className="flex items-center gap-2 text-sm text-foreground/80">
                         <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                         {useCase}
                       </li>
@@ -130,13 +137,16 @@ export default function IndustriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding">
-        <div className="section-container">
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-primary/10 to-primary/5" />
+        <div className="absolute inset-0 mesh-gradient opacity-50" />
+        
+        <div className="section-container relative">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Have a specific industry challenge?
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-muted-foreground mb-8 text-lg">
               Let's discuss how AI can address your unique operational needs.
             </p>
             <Button variant="hero" size="xl" asChild>
