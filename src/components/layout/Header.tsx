@@ -34,8 +34,8 @@ export function Header() {
   return <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <nav className="section-container flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="AnantaAI Logo" className="h-10 w-auto shadow-none" />
-          <span className="text-xl font-sans font-extrabold text-destructive">AnantaAI Solutions</span>
+          <img src={logo} alt="AINEXIA Intelligence Logo" className="h-10 w-auto shadow-none" />
+          <span className="text-xl font-sans font-extrabold text-primary">AINEXIA Intelligence</span>
         </Link>
 
         {/* Desktop Navigation */}

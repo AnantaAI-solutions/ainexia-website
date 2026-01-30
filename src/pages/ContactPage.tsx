@@ -49,7 +49,7 @@ export default function ContactPage() {
               <span className="gradient-text">Contact</span> Us
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed animate-fade-in-delay-1">
-              Start your AI project with AnantaAI Solutions. We'd love to hear 
+              Start your AI project with AINEXIA Intelligence. We'd love to hear 
               about your challenges and explore how we can help.
             </p>
           </div>
@@ -83,8 +83,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:contact@anantaai.com" className="text-primary hover:underline">
-                      contact@anantaai.com
+                    <a href="mailto:contact@ainexia.ai" className="text-primary hover:underline">
+                      contact@ainexia.ai
                     </a>
                   </div>
                 </div>
