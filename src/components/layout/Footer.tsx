@@ -35,9 +35,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="AINEXIA Intelligence Logo" className="h-8 w-auto" />
-              <span className="font-semibold text-lg text-primary">AINEXIA Intelligence</span>
+            <Link to="/" className="flex items-center mb-4">
+              <img src={logo} alt="AINEXIA Intelligence" className="h-10 w-auto" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               The Next Era of Intelligent Systems.
