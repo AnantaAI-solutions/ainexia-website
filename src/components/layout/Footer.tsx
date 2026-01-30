@@ -36,13 +36,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="AnantaAI Logo" className="h-8 w-auto" />
-              <span className="font-semibold text-lg text-destructive">AnantaAI Solutions</span>
+              <img src={logo} alt="AINEXIA Intelligence Logo" className="h-8 w-auto" />
+              <span className="font-semibold text-lg text-primary">AINEXIA Intelligence</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Infinite Intelligence. Practical Solutions.
+              The Next Era of Intelligent Systems.
               <br />
-              Building custom AI products for real-world impact.
+              Building next-generation AI-powered systems for real-world impact.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ export function Footer() {
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} AnantaAI Solutions. All rights reserved.
+            © {new Date().getFullYear()} AINEXIA Intelligence. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <span className="text-muted-foreground text-sm">

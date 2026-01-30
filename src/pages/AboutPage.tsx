@@ -20,10 +20,10 @@ export default function AboutPage() {
         <div className="section-container">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-              About <span className="gradient-text">AnantaAI Solutions</span>
+              About <span className="gradient-text">AINEXIA Intelligence</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed animate-fade-in-delay-1">
-              AnantaAI Solutions was founded to build high-quality AI-driven solutions 
+              AINEXIA Intelligence was founded to build next-generation AI systems 
               that reduce manual effort and create meaningful impact through technology.
             </p>
           </div>
@@ -45,9 +45,9 @@ export default function AboutPage() {
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
                 Founded by an engineer with deep experience in artificial intelligence, 
-                AnantaAI Solutions emerged from a belief that AI can be meaningfully 
-                applied across diverse domains—from finance and robotics to mobile 
-                applications and digital systems.
+                AINEXIA Intelligence emerged from a belief that AI can be meaningfully 
+                applied across diverse domains—from education and autonomy to analytics 
+                and enterprise platforms.
               </p>
               <p>
                 Our focus has always been on practical, deployable AI rather than hype. 
@@ -117,10 +117,10 @@ export default function AboutPage() {
             <Users className="h-12 w-12 text-primary mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-4">Our Team</h2>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              AnantaAI Solutions is currently a founder-led organization, with plans 
+              AINEXIA Intelligence is currently a founder-led organization, with plans 
               to build a strong engineering team in the near future. We are committed 
               to bringing together talented individuals who share our vision for 
-              practical, impactful AI.
+              next-generation, impactful AI.
             </p>
           </div>
         </div>
