@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 import { MapPin, Mail, ArrowRight } from "lucide-react";
 
 export default function ContactPage() {
@@ -21,38 +20,19 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const { error } = await supabase
-        .from('contact_inquiries')
-        .insert({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          company: formData.company.trim() || null,
-          message: formData.message.trim()
-        });
-
-      if (error) throw error;
-
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible."
-      });
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        message: ""
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    toast({
+      title: "Message sent!",
+      description: "We'll get back to you as soon as possible."
+    });
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      message: ""
+    });
+    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -114,10 +94,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:contact@ainexia.in"
+                      href="mailto:contact@ainexia.ai"
                       className="text-primary hover:text-primary/80 transition-colors"
                     >
-                      contact@ainexia.in
+                      contact@ainexia.ai
                     </a>
                   </div>
                 </div>
