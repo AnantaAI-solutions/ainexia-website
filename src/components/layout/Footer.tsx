@@ -29,7 +29,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center mb-4 hover:opacity-90 transition-opacity">
-              <img src={logo} alt="AINEXIA Intelligence" className="h-10 w-auto" />
+              <img src={logo} alt="AINEXIA Intelligence" className="h-16 w-auto" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               The Next Era of Intelligent Systems.
