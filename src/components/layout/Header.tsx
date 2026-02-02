@@ -36,7 +36,7 @@ export function Header() {
       
       <nav className="section-container relative flex items-center justify-between py-4">
         <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
-          <img src={logo} alt="AINEXIA Intelligence" className="h-20 w-auto rounded-none" />
+          <img src={logo} alt="AINEXIA Intelligence" className="h-28 w-auto rounded-none" />
         </Link>
 
         {/* Desktop Navigation */}
