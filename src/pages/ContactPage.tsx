@@ -94,10 +94,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:contact@ainexia.ai"
+                      href="mailto:contact@ainexia.in"
                       className="text-primary hover:text-primary/80 transition-colors"
                     >
-                      contact@ainexia.ai
+                      contact@ainexia.in
                     </a>
                   </div>
                 </div>
