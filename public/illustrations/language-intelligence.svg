@@ -1,0 +1,18 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="700" fill="#0B1221"/>
+  <circle cx="180" cy="120" r="190" fill="#27C7F3" fill-opacity="0.15"/>
+  <circle cx="1060" cy="580" r="230" fill="#00E7A8" fill-opacity="0.15"/>
+  <rect x="120" y="90" width="960" height="520" rx="30" fill="#131F38" stroke="#2D4268"/>
+  <rect x="180" y="160" width="360" height="340" rx="20" fill="#0E182B"/>
+  <rect x="560" y="160" width="460" height="340" rx="20" fill="#0E182B"/>
+  <path d="M220 230H500" stroke="#3B527A" stroke-width="10" stroke-linecap="round"/>
+  <path d="M220 280H470" stroke="#3B527A" stroke-width="10" stroke-linecap="round"/>
+  <path d="M220 330H430" stroke="#3B527A" stroke-width="10" stroke-linecap="round"/>
+  <path d="M220 380H380" stroke="#3B527A" stroke-width="10" stroke-linecap="round"/>
+  <rect x="600" y="220" width="380" height="220" rx="16" stroke="#27C7F3" stroke-width="3"/>
+  <circle cx="680" cy="300" r="36" stroke="#00E7A8" stroke-width="3"/>
+  <path d="M740 300H940" stroke="#27C7F3" stroke-width="8" stroke-linecap="round"/>
+  <path d="M740 345H900" stroke="#27C7F3" stroke-width="8" stroke-linecap="round"/>
+  <text x="160" y="70" fill="#D7E8FF" font-size="36" font-family="Arial, sans-serif" font-weight="700">Language Intelligence</text>
+  <text x="160" y="650" fill="#91A9CD" font-size="24" font-family="Arial, sans-serif">Conversational AI • Search • Document Understanding</text>
+</svg>

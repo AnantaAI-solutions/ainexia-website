@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout";
-import { Eye, MessageSquare, AudioLines, Bot, ArrowRight, CheckCircle2, Cpu, Zap, Shield, TrendingUp } from "lucide-react";
+import { Eye, MessageSquare, AudioLines, Bot, ArrowRight, CheckCircle2, Cpu, Zap, Shield, TrendingUp, Code2, Cloud, Database } from "lucide-react";
 
 const capabilities = [
   {
@@ -56,6 +56,35 @@ const whyUs = [
   }
 ];
 
+const implementationShowcase = [
+  {
+    title: "Computer Vision Systems",
+    description: "Object detection, visual inspection, and intelligent monitoring pipelines for production environments.",
+    image: "/illustrations/computer-vision.svg"
+  },
+  {
+    title: "Language Intelligence",
+    description: "Conversational AI, semantic search, and document understanding workflows powered by LLM architectures.",
+    image: "/illustrations/language-intelligence.svg"
+  },
+  {
+    title: "Audio AI",
+    description: "Speech-to-intent analytics, acoustic event detection, and real-time audio signal intelligence.",
+    image: "/illustrations/audio-ai.svg"
+  },
+  {
+    title: "Autonomous Robotics",
+    description: "Sensor fusion, spatial awareness, and decision loops for autonomous and semi-autonomous systems.",
+    image: "/illustrations/robotics.svg"
+  }
+];
+
+const technologyStack = [
+  { icon: Code2, title: "Application Layer", items: ["React + TypeScript", "Vite + SWC", "Tailwind + shadcn/ui"] },
+  { icon: Cloud, title: "AI Delivery", items: ["Model APIs", "Inference services", "Automation workflows"] },
+  { icon: Database, title: "Data & Platform", items: ["Supabase", "Event logging", "Analytics pipelines"] }
+];
+
 export default function HomePage() {
   return (
     <Layout>
@@ -95,6 +124,41 @@ export default function HomePage() {
 
         {/* Bottom gradient fade */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      </section>
+
+      {/* Self Presentation / Implementation Areas */}
+      <section className="section-padding relative overflow-hidden">
+        <div className="absolute inset-0 animated-gradient opacity-30" />
+        <div className="section-container relative">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Self Presentation: What We Implement</h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+              A visual tour of our core implementation areas—designed for practical deployment and measurable business impact.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {implementationShowcase.map((item, index) => (
+              <article
+                key={item.title}
+                className="group rounded-2xl border border-border/80 bg-card/60 overflow-hidden hover-lift hover-glow"
+              >
+                <div className="aspect-[16/9] overflow-hidden border-b border-border/60">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${index % 2 === 0 ? "animate-float" : "animate-float-delayed"}`}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Who We Are */}
@@ -184,6 +248,57 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Ecosystem */}
+      <section className="section-padding relative">
+        <div className="absolute inset-0 bg-card/40" />
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_20%,hsl(199_89%_48%/0.12),transparent_45%),radial-gradient(circle_at_80%_80%,hsl(187_72%_50%/0.1),transparent_40%)]" />
+        <div className="section-container relative">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Technology We Use</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Our delivery model combines product engineering, AI infrastructure, and data platforms in one integrated stack.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {technologyStack.map((stack, index) => (
+              <div key={stack.title} className={`rounded-xl border border-border/70 bg-secondary/25 p-6 hover-glow shimmer ${index === 1 ? "animate-float-delayed" : "animate-float"}`}>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <stack.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">{stack.title}</h3>
+                <ul className="space-y-2">
+                  {stack.items.map((item) => (
+                    <li key={item} className="text-muted-foreground text-sm">• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-xl border border-border/70 bg-card/70 p-4 overflow-hidden">
+            <div className="marquee-track whitespace-nowrap text-sm md:text-base text-foreground/90">
+              <span className="mx-4">Computer Vision</span>
+              <span className="mx-4">LLM & NLP</span>
+              <span className="mx-4">Audio Intelligence</span>
+              <span className="mx-4">Predictive Analytics</span>
+              <span className="mx-4">MLOps Automation</span>
+              <span className="mx-4">Edge AI</span>
+              <span className="mx-4">Real-time Monitoring</span>
+              <span className="mx-4">Robotics Intelligence</span>
+              <span className="mx-4">Computer Vision</span>
+              <span className="mx-4">LLM & NLP</span>
+              <span className="mx-4">Audio Intelligence</span>
+              <span className="mx-4">Predictive Analytics</span>
+              <span className="mx-4">MLOps Automation</span>
+              <span className="mx-4">Edge AI</span>
+              <span className="mx-4">Real-time Monitoring</span>
+              <span className="mx-4">Robotics Intelligence</span>
+            </div>
           </div>
         </div>
       </section>
