@@ -38,8 +38,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center mb-4 hover:opacity-90 transition-opacity">
-              <img src={logo} alt="AINEXIA Intelligence" className="h-42 w-auto" />
+            <Link to="/" className="flex items-center gap-3 mb-4 hover:opacity-90 transition-opacity">
+              <img src={logo} alt="AINEXIA Intelligence" className="h-12 w-auto rounded-lg" />
+              <span className="text-xl font-bold tracking-tight gradient-text">AINEXIA INTELLIGENCE</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               The Next Era of Intelligent Systems.
