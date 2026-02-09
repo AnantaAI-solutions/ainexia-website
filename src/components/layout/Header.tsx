@@ -35,8 +35,9 @@ export function Header() {
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 opacity-50" />
       
       <nav className="section-container relative flex items-center justify-between py-4">
-        <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
-          <img src={logo} alt="AINEXIA Intelligence" className="h-28 w-auto rounded-none" />
+        <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+          <img src={logo} alt="AINEXIA Intelligence" className="h-12 w-auto rounded-lg" />
+          <span className="text-xl font-bold tracking-tight gradient-text">AINEXIA INTELLIGENCE</span>
         </Link>
 
         {/* Desktop Navigation */}
