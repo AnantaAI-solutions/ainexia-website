@@ -1,0 +1,24 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="700" fill="#0A1020"/>
+  <circle cx="1020" cy="120" r="220" fill="url(#g1)" fill-opacity="0.28"/>
+  <circle cx="220" cy="620" r="260" fill="url(#g2)" fill-opacity="0.22"/>
+  <rect x="110" y="110" width="980" height="480" rx="24" fill="#121D33" stroke="#2B3B5E"/>
+  <rect x="170" y="170" width="860" height="360" rx="18" fill="#0C1426"/>
+  <rect x="300" y="220" width="220" height="160" rx="12" stroke="#27C7F3" stroke-width="3"/>
+  <rect x="640" y="260" width="180" height="120" rx="10" stroke="#00E7A8" stroke-width="3"/>
+  <circle cx="420" cy="300" r="48" stroke="#27C7F3" stroke-width="3"/>
+  <path d="M780 320C780 293.49 801.49 272 828 272H910V368H828C801.49 368 780 346.51 780 320Z" stroke="#00E7A8" stroke-width="3"/>
+  <path d="M170 545H1030" stroke="#2B3B5E"/>
+  <text x="180" y="88" fill="#D5E8FF" font-size="36" font-family="Arial, sans-serif" font-weight="700">Computer Vision</text>
+  <text x="180" y="635" fill="#8FA8CC" font-size="24" font-family="Arial, sans-serif">Detection • Segmentation • Monitoring</text>
+  <defs>
+    <linearGradient id="g1" x1="800" y1="-100" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#27C7F3"/>
+      <stop offset="1" stop-color="#27C7F3" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="420" x2="380" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00E7A8"/>
+      <stop offset="1" stop-color="#00E7A8" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
