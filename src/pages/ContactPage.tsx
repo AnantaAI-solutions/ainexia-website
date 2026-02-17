@@ -1,10 +1,19 @@
 import { useState } from "react";
+import { z } from "zod";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
+
+const contactFormSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  company: z.string().trim().max(100, "Company must be less than 100 characters").optional().or(z.literal("")),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(2000, "Message must be less than 2000 characters"),
+});
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -20,19 +29,42 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible."
-    });
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      message: ""
-    });
-    setIsSubmitting(false);
+    try {
+      const validated = contactFormSchema.parse(formData);
+
+      const { error } = await supabase
+        .from('contact_inquiries')
+        .insert({
+          name: validated.name,
+          email: validated.email,
+          company: validated.company || null,
+          message: validated.message,
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible."
+      });
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: err.errors[0]?.message || "Please check your input.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
