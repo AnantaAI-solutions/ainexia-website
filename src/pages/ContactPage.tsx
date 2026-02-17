@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Mail, ArrowRight } from "lucide-react";
+import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -98,6 +98,20 @@ export default function ContactPage() {
                       className="text-primary hover:text-primary/80 transition-colors"
                     >
                       contact@ainexia.in
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 group">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">Phone</h3>
+                    <a
+                      href="tel:+918128569967"
+                      className="text-primary hover:text-primary/80 transition-colors"
+                    >
+                      (091) 8128569967
                     </a>
                   </div>
                 </div>
