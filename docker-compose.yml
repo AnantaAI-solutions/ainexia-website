@@ -1,0 +1,14 @@
+services:
+  ainexia-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ainexia-website
+    ports:
+      - "5177:5177"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5177"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

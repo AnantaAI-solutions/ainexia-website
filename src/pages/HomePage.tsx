@@ -4,75 +4,83 @@ import { Layout } from "@/components/layout";
 import {
   Eye, MessageSquare, AudioLines, Bot, ArrowRight,
   CheckCircle2, Cpu, Zap, Shield, TrendingUp,
-  Brain, Layers, Globe, Sparkles
+  Brain, Layers, Globe, Sparkles, ChevronDown,
+  Search, Lightbulb, Package, Rocket
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const solutions = [
   {
     icon: Eye,
     title: "Computer Vision",
     description: "Object detection, visual inspection, surveillance & autonomous perception systems.",
-    tag: "Vision AI"
+    tag: "Vision AI",
+    color: "from-blue-500/20 to-cyan-500/10"
   },
   {
     icon: MessageSquare,
     title: "Natural Language Processing",
     description: "Intelligent chatbots, document understanding, semantic search & text analytics.",
-    tag: "Language AI"
+    tag: "Language AI",
+    color: "from-violet-500/20 to-purple-500/10"
   },
   {
     icon: AudioLines,
     title: "Speech & Audio Intelligence",
     description: "Voice recognition, real-time transcription, audio classification & sound analytics.",
-    tag: "Audio AI"
+    tag: "Audio AI",
+    color: "from-emerald-500/20 to-teal-500/10"
   },
   {
     icon: Bot,
     title: "Robotics & Automation",
     description: "Sensor fusion, autonomous navigation, intelligent control & edge AI systems.",
-    tag: "Robotics AI"
+    tag: "Robotics AI",
+    color: "from-orange-500/20 to-amber-500/10"
   },
   {
     icon: Brain,
     title: "Predictive Analytics",
-    description: "Demand forecasting, anomaly detection, risk modeling & data-driven decision making.",
-    tag: "Analytics AI"
+    description: "Demand forecasting, anomaly detection, risk modeling & data-driven decisions.",
+    tag: "Analytics AI",
+    color: "from-pink-500/20 to-rose-500/10"
   },
   {
     icon: Layers,
     title: "Custom AI Products",
     description: "End-to-end AI product development from concept to deployment at scale.",
-    tag: "Product AI"
+    tag: "Product AI",
+    color: "from-indigo-500/20 to-blue-500/10"
   }
 ];
 
 const stats = [
-  { value: "10+", label: "AI Solutions" },
-  { value: "6+", label: "Industry Verticals" },
-  { value: "100%", label: "Custom Built" },
-  { value: "24/7", label: "Support Ready" },
+  { value: 10, suffix: "+", label: "AI Solutions Built" },
+  { value: 6, suffix: "+", label: "Industry Verticals" },
+  { value: 100, suffix: "%", label: "Custom Built" },
+  { value: 24, suffix: "/7", label: "Support Ready" },
 ];
 
 const whyUs = [
   {
     icon: Cpu,
     title: "Full-Stack AI Expertise",
-    description: "From data pipelines to model deployment — we handle the entire AI lifecycle under one roof."
+    description: "From data pipelines to model deployment — we handle the entire AI lifecycle."
   },
   {
     icon: TrendingUp,
-    title: "Production-Grade Solutions",
-    description: "Battle-tested systems engineered for reliability, performance, and enterprise-scale deployment."
+    title: "Production-Grade Systems",
+    description: "Battle-tested systems engineered for reliability and enterprise-scale deployment."
   },
   {
     icon: Zap,
     title: "Rapid Prototyping",
-    description: "Go from idea to working AI prototype in weeks, not months. Validate fast, scale faster."
+    description: "Go from idea to working AI prototype in weeks. Validate fast, scale faster."
   },
   {
     icon: Shield,
     title: "Responsible & Secure AI",
-    description: "Privacy-first architecture with bias monitoring, explainability, and compliance built-in."
+    description: "Privacy-first architecture with bias monitoring, explainability, and compliance."
   }
 ];
 
@@ -85,177 +93,333 @@ const industries = [
   "Logistics & Supply Chain"
 ];
 
+const processSteps = [
+  {
+    icon: Search,
+    step: "01",
+    title: "Discovery & Strategy",
+    description: "Deep-dive into your business problem, data landscape, and success metrics to craft a winning AI strategy."
+  },
+  {
+    icon: Lightbulb,
+    step: "02",
+    title: "Architecture & Design",
+    description: "Design the optimal AI architecture — choosing the right models, infrastructure, and integration points."
+  },
+  {
+    icon: Package,
+    step: "03",
+    title: "Build & Validate",
+    description: "Iterative development with continuous validation — PoC, MVP, and production-grade refinement."
+  },
+  {
+    icon: Rocket,
+    step: "04",
+    title: "Deploy & Scale",
+    description: "Production deployment, MLOps setup, monitoring dashboards, and ongoing model performance optimization."
+  }
+];
+
+const techLogos = [
+  "PyTorch", "TensorFlow", "OpenCV", "Hugging Face", "YOLO", "LangChain",
+  "ROS2", "Docker", "Kubernetes", "Apache Kafka", "MLflow", "ONNX",
+  "TensorRT", "CUDA", "Scikit-learn", "JAX"
+];
+
+// Animated counter component
+function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !started.current) {
+          started.current = true;
+          const duration = 1800;
+          const steps = 60;
+          const increment = target / steps;
+          let current = 0;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              setCount(target);
+              clearInterval(timer);
+            } else {
+              setCount(Math.floor(current));
+            }
+          }, duration / steps);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target]);
+
+  return (
+    <div ref={ref} className="text-4xl md:text-5xl font-black gradient-text tabular-nums">
+      {count}{suffix}
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative py-28 lg:py-40 overflow-hidden">
+      {/* ─── Hero ─── */}
+      <section className="relative min-h-[90vh] flex items-center py-32 lg:py-40 overflow-hidden">
+        {/* Layered backgrounds */}
         <div className="absolute inset-0 hero-glow" />
         <div className="absolute inset-0 mesh-gradient" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl animate-glow-pulse pointer-events-none" />
-        
+        {/* Orbs */}
+        <div className="orb w-[600px] h-[600px] bg-primary/8 top-0 -left-40 opacity-60" style={{ animationDuration: "10s" }} />
+        <div className="orb w-[500px] h-[500px] bg-violet-500/6 -bottom-20 -right-40 opacity-60" style={{ animationDuration: "14s", animationDelay: "2s" }} />
+        <div className="orb w-[300px] h-[300px] bg-cyan-400/8 top-1/3 right-1/4 opacity-40" style={{ animationDuration: "8s", animationDelay: "1s" }} />
+
         <div className="section-container relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-in">
+          <div className="max-w-5xl mx-auto text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/25 mb-8 animate-fade-in">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">All AI Solutions — One Partner</span>
+              <span className="text-sm font-semibold text-primary">All AI Solutions — One Expert Partner</span>
             </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.08] mb-8 animate-fade-in">
+
+            {/* Headline */}
+            <h1 className="responsive-hero-text font-black leading-[1.05] mb-8 animate-fade-in-up text-balance">
               Every AI Solution{" "}
               <span className="gradient-text">Your Business Needs</span>
               <br />
-              <span className="text-muted-foreground text-3xl md:text-4xl lg:text-5xl font-medium">
+              <span className="text-muted-foreground text-3xl sm:text-4xl md:text-5xl font-medium">
                 Built, Deployed & Scaled
               </span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-delay-1">
-              Vision, Language, Audio, Robotics, Analytics — we design, build, and deploy 
-              AI systems that create measurable business impact. One team. Complete AI coverage.
+              Vision, Language, Audio, Robotics, Analytics — we design, build, and deploy{" "}
+              AI systems that create measurable business impact.{" "}
+              <span className="text-foreground/80 font-medium">One team. Complete AI coverage.</span>
             </p>
-            
+
+            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
               <Button variant="hero" size="xl" asChild>
-                <Link to="/contact">
+                <Link to="/contact" className="group">
                   Get a Free AI Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               <Button variant="heroOutline" size="xl" asChild>
                 <Link to="/services">See All Solutions</Link>
               </Button>
             </div>
+
+            {/* Scroll hint */}
+            <div className="mt-16 flex flex-col items-center gap-2 text-muted-foreground animate-fade-in-delay-3">
+              <span className="text-xs font-medium uppercase tracking-widest">Scroll to explore</span>
+              <ChevronDown className="h-5 w-5 animate-bounce" />
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
       </section>
 
-      {/* Stats Bar */}
-      <section className="relative -mt-8 z-10">
+      {/* ─── Stats Bar ─── */}
+      <section className="relative -mt-4 z-10">
         <div className="section-container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 glass-card rounded-2xl p-8 shadow-lg">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 glass-card rounded-2xl p-8 shadow-xl">
             {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+              <div key={i} className="text-center group">
+                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                <div className="text-sm text-muted-foreground font-medium mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* One-Stop Positioning */}
+      {/* ─── One-Stop Positioning ─── */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent" />
         <div className="section-container relative">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Globe className="h-5 w-5 text-primary" />
-              <span className="text-sm font-semibold text-primary uppercase tracking-[0.15em]">
-                Why One Partner for All AI
-              </span>
+              <span className="section-label">Why One Partner for All AI</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-balance">
               Stop juggling multiple AI vendors
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Most companies work with 3-5 different vendors for their AI needs — leading to 
-              fragmented systems, integration headaches, and wasted budgets. AINEXIA brings 
-              every AI capability under one roof with unified architecture, seamless integration, 
+              Most companies work with 3–5 different vendors for their AI needs — leading to{" "}
+              fragmented systems, integration headaches, and wasted budgets. AINEXIA brings{" "}
+              every AI capability under one roof with unified architecture, seamless integration,{" "}
               and a single point of accountability.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Solutions Grid */}
+      {/* ─── Solutions Grid ─── */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/30" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-        
+        <div className="absolute inset-0 bg-card/40" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+
         <div className="section-container relative">
           <div className="text-center mb-16">
+            <span className="section-label mb-4 block">What We Build</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Complete AI Solutions Suite
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              From computer vision to predictive analytics — every AI capability your business needs, 
+              From computer vision to predictive analytics — every AI capability your business needs,
               expertly built and production-ready.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {solutions.map((item, index) => (
               <div
                 key={index}
-                className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover-lift"
+                className="group premium-card gradient-border cursor-default"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <item.icon className="h-6 w-6 text-primary" />
+                {/* Gradient background on hover */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className="relative">
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="icon-box-lg">
+                      <item.icon className="h-7 w-7 text-primary" />
+                    </div>
+                    <span className="tag-badge">{item.tag}</span>
                   </div>
-                  <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-                    {item.tag}
-                  </span>
+                  <h3 className="text-lg font-bold mb-2 text-foreground">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  <div className="mt-5 flex items-center gap-1 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-10">
             <Button variant="outline" size="lg" asChild>
-              <Link to="/services">
+              <Link to="/services" className="group">
                 Explore All Services
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Industries */}
+      {/* ─── How We Work (Process) ─── */}
+      <section className="section-padding relative overflow-hidden">
+        <div className="orb w-[400px] h-[400px] bg-primary/6 top-0 right-0 opacity-50" />
+        <div className="orb w-[300px] h-[300px] bg-violet-500/5 bottom-0 left-10 opacity-40" />
+
+        <div className="section-container relative">
+          <div className="text-center mb-16">
+            <span className="section-label mb-4 block">Our Approach</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+              From Idea to Impact — Our Process
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              A proven 4-step framework that takes your AI vision from concept to production.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {processSteps.map((step, index) => (
+              <div key={index} className="group relative p-6 rounded-2xl border border-border hover:border-primary/40 bg-card transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <div className="flex items-start justify-between mb-5">
+                  <div className="icon-box">
+                    <step.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <span className="text-3xl font-black text-primary/15 group-hover:text-primary/25 transition-colors font-display">
+                    {step.step}
+                  </span>
+                </div>
+                <h3 className="font-bold mb-2 text-foreground">{step.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Tech Logos Marquee ─── */}
+      <section className="py-12 relative">
+        <div className="absolute inset-0 bg-card/40" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+        <div className="section-container relative mb-6">
+          <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest">
+            Powered by cutting-edge AI technologies
+          </p>
+        </div>
+
+        <div className="marquee-wrapper">
+          <div className="marquee-track">
+            {[...techLogos, ...techLogos].map((tech, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 px-5 py-2.5 rounded-xl border border-border bg-background text-sm font-mono font-medium text-muted-foreground hover:text-primary hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 cursor-default"
+              >
+                {tech}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Industries + Why Us ─── */}
       <section className="section-padding relative overflow-hidden">
         <div className="section-container relative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <span className="section-label mb-4 block">Industries We Serve</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-5 text-balance">
                 AI Solutions for Every Industry
               </h2>
               <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
-                We understand the unique challenges of your industry and deliver AI solutions 
+                We understand the unique challenges of your industry and deliver AI solutions
                 tailored to your specific workflows, compliance needs, and growth objectives.
               </p>
-              <ul className="space-y-4">
+              <ul className="space-y-3 mb-8">
                 {industries.map((item, index) => (
                   <li key={index} className="flex items-center gap-4 group">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                       <CheckCircle2 className="h-4 w-4 text-primary" />
                     </div>
-                    <span className="text-lg text-foreground/90">{item}</span>
+                    <span className="text-foreground/90 font-medium">{item}</span>
                   </li>
                 ))}
               </ul>
-              <Button variant="heroOutline" className="mt-8" asChild>
-                <Link to="/industries">See Industry Solutions</Link>
+              <Button variant="heroOutline" asChild>
+                <Link to="/industries" className="group">
+                  See Industry Solutions
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
             </div>
-            
+
             {/* Why Us Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {whyUs.map((item, index) => (
                 <div
                   key={index}
-                  className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover-lift"
+                  className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <item.icon className="h-6 w-6 text-primary" />
+                  <div className="icon-box mb-5">
+                    <item.icon className="h-5 w-5 text-primary" />
                   </div>
-                  <h3 className="font-semibold mb-2 text-foreground">{item.title}</h3>
+                  <h3 className="font-bold mb-2 text-foreground">{item.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
               ))}
@@ -264,30 +428,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ─── CTA ─── */}
       <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-primary/10 to-primary/5" />
+        <div className="absolute inset-0 cta-gradient" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        <div className="absolute inset-0 mesh-gradient opacity-50" />
-        
+        <div className="orb w-[400px] h-[400px] bg-primary/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60" />
+
         <div className="section-container relative">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <span className="section-label mb-4 block">Get Started Today</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-5 text-balance">
               Ready to consolidate your AI strategy?
             </h2>
             <p className="text-muted-foreground mb-4 text-lg">
-              Get a free consultation to discover how AINEXIA can replace multiple vendors 
+              Get a free consultation to discover how AINEXIA can replace multiple vendors
               with one integrated, powerful AI platform.
             </p>
-            <p className="text-sm text-muted-foreground mb-8">
+            <p className="text-sm text-muted-foreground mb-10">
               No commitment required · Response within 24 hours
             </p>
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/contact">
-                Schedule Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/contact" className="group">
+                  Schedule Free Consultation
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="xl" asChild>
+                <a href="tel:+918128569967">Call Us Now</a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
