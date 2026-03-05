@@ -34,11 +34,10 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? "bg-background/85 backdrop-blur-xl border-b border-border/60 shadow-sm"
           : "bg-transparent border-b border-transparent"
-      }`}
+        }`}
     >
       <nav className="section-container relative flex items-center justify-between py-3 md:py-4">
         {/* Logo */}
@@ -48,7 +47,7 @@ export function Header() {
             <div className="absolute inset-0 rounded-lg bg-primary/10 opacity-0 hover:opacity-100 transition-opacity" />
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-base font-bold tracking-tight gradient-text">AINEXIA</span>
+            <span className="text-xl font-extrabold tracking-tight gradient-text">AINEXIA</span>
             <span className="text-[10px] text-muted-foreground font-medium tracking-widest uppercase">Intelligence</span>
           </div>
         </Link>
@@ -59,11 +58,10 @@ export function Header() {
             <Link
               key={item.name}
               to={item.href}
-              className={`relative px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
-                location.pathname === item.href
+              className={`relative px-3 py-2 text-sm rounded-lg transition-all duration-200 ${location.pathname === item.href
                   ? "text-primary font-semibold"
                   : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-              }`}
+                }`}
             >
               {item.name}
               {location.pathname === item.href && (
@@ -104,9 +102,8 @@ export function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <div className="border-t border-border/50 bg-background/95 backdrop-blur-xl">
           <div className="section-container py-4 flex flex-col gap-1">
@@ -115,11 +112,10 @@ export function Header() {
                 key={item.name}
                 to={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-3 text-sm rounded-xl transition-all duration-200 ${
-                  location.pathname === item.href
+                className={`px-4 py-3 text-sm rounded-xl transition-all duration-200 ${location.pathname === item.href
                     ? "text-primary bg-primary/10 font-semibold border border-primary/20"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
-                }`}
+                  }`}
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 {item.name}

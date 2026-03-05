@@ -33,30 +33,6 @@ export function Footer() {
       {/* Top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-      {/* CTA Banner */}
-      <div className="relative overflow-hidden border-b border-border/50">
-        <div className="absolute inset-0 cta-gradient opacity-60" />
-        <div className="section-container py-10 relative">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-xl font-bold mb-1">Ready to build your AI solution?</h3>
-              <p className="text-muted-foreground text-sm">Get a free consultation within 24 hours.</p>
-            </div>
-            <Link
-              to="/contact"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:gap-3"
-              style={{
-                background: "var(--gradient-primary)",
-                color: "#fff",
-              }}
-            >
-              Start Free Consultation
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </div>
-
       {/* Main footer */}
       <div className="bg-card/30">
         <div className="section-container py-14 relative">

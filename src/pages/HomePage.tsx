@@ -55,8 +55,8 @@ const solutions = [
 ];
 
 const stats = [
-  { value: 10, suffix: "+", label: "AI Solutions Built" },
-  { value: 6, suffix: "+", label: "Industry Verticals" },
+  { value: 9, suffix: "+", label: "Years AI Expertise" },
+  { value: 5, suffix: "+", label: "AI Domains" },
   { value: 100, suffix: "%", label: "Custom Built" },
   { value: 24, suffix: "/7", label: "Support Ready" },
 ];
@@ -198,9 +198,10 @@ export default function HomePage() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-delay-1">
-              Vision, Language, Audio, Robotics, Analytics — we design, build, and deploy{" "}
-              AI systems that create measurable business impact.{" "}
-              <span className="text-foreground/80 font-medium">One team. Complete AI coverage.</span>
+              Vision, Language, Audio, Robotics, LLMs — backed by{" "}
+              <span className="text-foreground/80 font-medium">9+ years of hands-on AI expertise</span>.
+              We design, build, and deploy AI systems that create measurable business impact —{" "}
+              currently building in-house, ready for your next project.
             </p>
 
             {/* CTAs */}

@@ -25,10 +25,10 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2023", event: "AINEXIA Intelligence Founded", detail: "Born from a vision to democratize enterprise-grade AI." },
-  { year: "2024", event: "First Production AI Systems", detail: "Deployed computer vision and NLP systems for early clients." },
-  { year: "2025", event: "Multi-Domain Expansion", detail: "Expanded into robotics, audio AI, and predictive analytics." },
-  { year: "2026", event: "Scaling for Impact", detail: "Building toward a world-class AI engineering team." },
+  { year: "Feb 2026", event: "AINEXIA Intelligence Founded", detail: "Born from 9+ years of hands-on AI experience — a company built to make enterprise AI accessible and practical." },
+  { year: "2026", event: "In-House AI Projects Underway", detail: "Actively building internal AI products across Computer Vision, LLMs, Robotics, and Speech AI." },
+  { year: "2026", event: "Building the Foundation", detail: "Establishing core AI capabilities, infrastructure, and product roadmap for client-ready delivery." },
+  { year: "Next", event: "First Client Deployments", detail: "Preparing to deliver production-grade AI solutions to external clients across diverse industries." },
 ];
 
 export default function AboutPage() {
@@ -70,35 +70,34 @@ export default function AboutPage() {
               </h2>
               <div className="flex gap-6 mb-6">
                 <div className="text-center">
-                  <div className="text-3xl font-black gradient-text">3+</div>
-                  <div className="text-xs text-muted-foreground font-medium mt-1">Years Building</div>
+                  <div className="text-3xl font-black gradient-text">9+</div>
+                  <div className="text-xs text-muted-foreground font-medium mt-1">Years Domain Expertise</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-black gradient-text">10+</div>
-                  <div className="text-xs text-muted-foreground font-medium mt-1">AI Systems</div>
+                  <div className="text-3xl font-black gradient-text">5+</div>
+                  <div className="text-xs text-muted-foreground font-medium mt-1">AI Capabilities</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-black gradient-text">6+</div>
-                  <div className="text-xs text-muted-foreground font-medium mt-1">Verticals</div>
+                  <div className="text-3xl font-black gradient-text">Feb</div>
+                  <div className="text-xs text-muted-foreground font-medium mt-1">Founded 2026</div>
                 </div>
               </div>
             </div>
 
             <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
               <p>
-                Founded by an engineer with deep experience in artificial intelligence,
-                AINEXIA Intelligence emerged from a belief that AI can be meaningfully
-                applied across diverse domains — from education and autonomy to analytics
-                and enterprise platforms.
+                Founded in February 2026 by an AI engineer with <span className="text-foreground/90 font-medium">9+ years of hands-on domain expertise</span>,
+                AINEXIA Intelligence was built on a simple belief — that enterprise-grade AI
+                should be practical, deployable, and built for real-world impact.
               </p>
               <p>
-                Our focus has always been on <span className="text-foreground/90 font-medium">practical, deployable AI</span> rather than hype.
-                The true value of AI lies not in its complexity, but in its ability to solve
-                real problems and create tangible business outcomes.
+                We are currently building in-house AI projects spanning Computer Vision,
+                Large Language Models (LLMs), Robotics, Speech AI, and Predictive Analytics —
+                developing the systems and expertise that will power client solutions.
               </p>
               <p>
-                Today, we work with organizations to design and build custom AI products
-                that are engineered for production — not just proof of concepts.
+                Our focus has always been on <span className="text-foreground/90 font-medium">production-ready AI over hype</span>.
+                We build systems that work reliably in real environments — not just demos.
               </p>
             </div>
           </div>
