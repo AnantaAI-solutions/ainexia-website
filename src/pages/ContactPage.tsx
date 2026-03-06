@@ -10,6 +10,9 @@ import {
   MapPin, Mail, Phone, ArrowRight, ChevronDown, Clock,
   MessageSquare, CheckCircle2, Linkedin
 } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+import contactAbstract from "@/assets/graphics/contact_comms.png";
+import contactAbstractLight from "@/assets/graphics/contact_comms_light.png";
 
 const contactFormSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
@@ -42,6 +45,8 @@ const faqs = [
 ];
 
 export default function ContactPage() {
+  const { theme } = useTheme();
+  const currentImage = theme === "dark" ? contactAbstract : contactAbstractLight;
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" });
@@ -96,11 +101,17 @@ export default function ContactPage() {
     <Layout>
       {/* Hero */}
       <section className="relative section-padding overflow-hidden">
-        <div className="absolute inset-0 hero-glow" />
-        <div className="absolute inset-0 mesh-gradient" />
-        <div className="orb w-[500px] h-[500px] bg-primary/8 -top-20 -right-20 opacity-50" />
 
-        <div className="section-container relative">
+        {/* Animated Background Graphic */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none z-0">
+          <img
+            src={currentImage}
+            alt="AI communication connectivity abstract"
+            className={`w-full max-w-[1200px] object-cover animate-float-slow filter brightness-90 contrast-125 ${theme === "dark" ? "mix-blend-screen" : "mix-blend-multiply opacity-70"}`}
+          />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="max-w-3xl">
             <span className="section-label mb-5 block">Let's Talk</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 animate-fade-in">
@@ -116,7 +127,6 @@ export default function ContactPage() {
 
       {/* Contact Content */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/40" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
@@ -310,7 +320,6 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className="section-padding relative overflow-hidden">
-        <div className="orb w-[400px] h-[400px] bg-primary/6 bottom-0 left-0 opacity-40" />
         <div className="section-container relative">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">

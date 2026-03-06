@@ -5,6 +5,9 @@ import {
   Lightbulb, Globe, BookOpen, ArrowRight, Mail,
   Heart, Zap, Users, Coffee, TrendingUp, Clock
 } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+import careersAbstract from "@/assets/graphics/careers_growth.png";
+import careersAbstractLight from "@/assets/graphics/careers_growth_light.png";
 
 const culture = [
   {
@@ -53,15 +56,24 @@ const futureRoles = [
 ];
 
 export default function CareersPage() {
+  const { theme } = useTheme();
+  const currentImage = theme === "dark" ? careersAbstract : careersAbstractLight;
+
   return (
     <Layout>
       {/* Hero */}
       <section className="relative section-padding overflow-hidden">
-        <div className="absolute inset-0 hero-glow" />
-        <div className="absolute inset-0 mesh-gradient" />
-        <div className="orb w-[500px] h-[500px] bg-primary/8 -top-20 -right-20 opacity-50" />
 
-        <div className="section-container relative">
+        {/* Animated Background Graphic */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none z-0">
+          <img
+            src={currentImage}
+            alt="AI careers growth abstract"
+            className={`w-full max-w-[1200px] object-cover animate-float-slow filter brightness-90 contrast-125 ${theme === "dark" ? "mix-blend-screen" : "mix-blend-multiply opacity-70"}`}
+          />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="max-w-3xl">
             <span className="section-label mb-5 block">Join Our Mission</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 animate-fade-in">
@@ -81,7 +93,6 @@ export default function CareersPage() {
 
       {/* Culture */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/50" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
@@ -124,7 +135,6 @@ export default function CareersPage() {
 
       {/* Future Roles */}
       <section className="section-padding relative overflow-hidden">
-        <div className="orb w-[400px] h-[400px] bg-primary/6 top-0 right-0 opacity-50" />
         <div className="section-container relative">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -158,7 +168,6 @@ export default function CareersPage() {
 
       {/* Contact */}
       <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 cta-gradient" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
         <div className="orb w-[400px] h-[400px] bg-primary/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50" />
 

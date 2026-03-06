@@ -9,9 +9,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Technologies", href: "/technologies" },
-  { name: "Products", href: "/products" },
-  { name: "Industries", href: "/industries" },
+  { name: "Solutions", href: "/solutions" },
   { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
@@ -34,21 +32,20 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-border/60 shadow-sm"
-          : "bg-transparent border-b border-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || location.pathname !== "/"
+        ? "bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm"
+        : "bg-transparent border-b-0"
         }`}
     >
-      <nav className="section-container relative flex items-center justify-between py-3 md:py-4">
+      <nav className="section-container relative flex items-center justify-between py-4 md:py-6">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity flex-shrink-0">
-          <div className="relative">
-            <img src={logo} alt="AINEXIA Intelligence" className="h-9 w-auto rounded-lg" />
-            <div className="absolute inset-0 rounded-lg bg-primary/10 opacity-0 hover:opacity-100 transition-opacity" />
+        <Link to="/" className="flex items-center gap-4 hover:opacity-80 transition-all duration-300 flex-shrink-0 group">
+          <div className="relative flex items-center justify-center">
+            <img src={logo} alt="AINEXIA" className="h-8 w-auto transition-transform duration-500 group-hover:scale-110" />
           </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-xl font-extrabold tracking-tight gradient-text">AINEXIA</span>
-            <span className="text-[10px] text-muted-foreground font-medium tracking-widest uppercase">Intelligence</span>
+          <div className="flex flex-col leading-none pt-0.5">
+            <span className="text-lg font-extrabold tracking-[0.18em] text-foreground font-display uppercase">AINEXIA</span>
+            <span className="text-[8px] text-primary/80 font-bold tracking-[0.4em] uppercase mt-0.5">Intelligence</span>
           </div>
         </Link>
 
@@ -59,8 +56,8 @@ export function Header() {
               key={item.name}
               to={item.href}
               className={`relative px-3 py-2 text-sm rounded-lg transition-all duration-200 ${location.pathname === item.href
-                  ? "text-primary font-semibold"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                ? "text-foreground font-semibold"
+                : "text-muted-foreground hover:text-foreground"
                 }`}
             >
               {item.name}
@@ -113,8 +110,8 @@ export function Header() {
                 to={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`px-4 py-3 text-sm rounded-xl transition-all duration-200 ${location.pathname === item.href
-                    ? "text-primary bg-primary/10 font-semibold border border-primary/20"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                  ? "text-primary bg-primary/10 font-semibold border border-primary/20"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
                   }`}
                 style={{ animationDelay: `${index * 40}ms` }}
               >

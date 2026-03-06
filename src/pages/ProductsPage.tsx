@@ -3,8 +3,25 @@ import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import {
   Eye, Shield, Bot, Building2, Heart, Factory, ArrowRight,
-  Lightbulb, Layers, CheckCircle, Scale, Badge, Rocket, FlaskConical
+  Lightbulb, Layers, CheckCircle, Scale, Badge, Rocket, FlaskConical,
+  Plane, Landmark, CheckCircle2
 } from "lucide-react";
+
+import { useTheme } from "@/components/ThemeProvider";
+import productsHero from "@/assets/graphics/products_hero.png";
+import productsHeroLight from "@/assets/graphics/products_hero_light.png";
+import cvImage from "@/assets/graphics/computer_vision.png";
+import cvImageLight from "@/assets/graphics/computer_vision_light.png";
+import surveillanceImage from "@/assets/graphics/surveillance_security.png";
+import surveillanceImageLight from "@/assets/graphics/surveillance_security_light.png";
+import roboticsImage from "@/assets/graphics/robotics.png";
+import roboticsImageLight from "@/assets/graphics/robotics_light.png";
+import nlpImage from "@/assets/graphics/nlp_language.png";
+import nlpImageLight from "@/assets/graphics/nlp_language_light.png";
+import healthcareImage from "@/assets/graphics/healthcare_ai.png";
+import healthcareImageLight from "@/assets/graphics/healthcare_ai_light.png";
+import industrialImage from "@/assets/graphics/industrial_ai.png";
+import industrialImageLight from "@/assets/graphics/industrial_ai_light.png";
 
 const productAreas = [
   {
@@ -13,7 +30,10 @@ const productAreas = [
     description: "End-to-end visual perception systems for diverse applications — from surveillance to quality control.",
     status: "Available",
     statusColor: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
-    number: "01"
+    number: "01",
+    image: cvImage,
+    imageLight: cvImageLight,
+    color: "from-blue-500/20 to-cyan-500/10"
   },
   {
     icon: Shield,
@@ -21,7 +41,10 @@ const productAreas = [
     description: "Intelligent monitoring and threat detection solutions for enterprise and public safety.",
     status: "Available",
     statusColor: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
-    number: "02"
+    number: "02",
+    image: surveillanceImage,
+    imageLight: surveillanceImageLight,
+    color: "from-red-500/20 to-orange-500/10"
   },
   {
     icon: Bot,
@@ -29,7 +52,10 @@ const productAreas = [
     description: "Perception and decision-making components for autonomous systems and drones.",
     status: "Available",
     statusColor: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20",
-    number: "03"
+    number: "03",
+    image: roboticsImage,
+    imageLight: roboticsImageLight,
+    color: "from-orange-500/20 to-amber-500/10"
   },
   {
     icon: Building2,
@@ -37,7 +63,10 @@ const productAreas = [
     description: "Business process automation and intelligent workflow solutions for large organizations.",
     status: "In Development",
     statusColor: "text-amber-500 bg-amber-500/10 border-amber-500/20",
-    number: "04"
+    number: "04",
+    image: nlpImage,
+    imageLight: nlpImageLight,
+    color: "from-violet-500/20 to-purple-500/10"
   },
   {
     icon: Heart,
@@ -45,7 +74,10 @@ const productAreas = [
     description: "AI-powered solutions for healthcare diagnostics, imaging analysis, and operations.",
     status: "In Development",
     statusColor: "text-amber-500 bg-amber-500/10 border-amber-500/20",
-    number: "05"
+    number: "05",
+    image: healthcareImage,
+    imageLight: healthcareImageLight,
+    color: "from-emerald-500/20 to-teal-500/10"
   },
   {
     icon: Factory,
@@ -53,8 +85,81 @@ const productAreas = [
     description: "Predictive maintenance and quality control systems for Industry 4.0 environments.",
     status: "Research",
     statusColor: "text-blue-500 bg-blue-500/10 border-blue-500/20",
-    number: "06"
+    number: "06",
+    image: industrialImage,
+    imageLight: industrialImageLight,
+    color: "from-indigo-500/20 to-blue-500/10"
   }
+];
+
+
+const industries = [
+  {
+    icon: Plane,
+    title: "Drones & Robotics",
+    description: "Enabling autonomous operations with intelligent perception systems for aerospace and robotics applications.",
+    useCases: [
+      "Visual navigation and obstacle avoidance",
+      "Object detection and tracking",
+      "Autonomous flight path planning",
+    ],
+    color: "from-blue-500/15 to-cyan-500/5"
+  },
+  {
+    icon: Shield,
+    title: "Surveillance & Security",
+    description: "AI-powered monitoring for enhanced safety, threat detection, and proactive incident response.",
+    useCases: [
+      "Real-time anomaly detection",
+      "Facial recognition systems",
+      "Perimeter intrusion detection",
+    ],
+    color: "from-red-500/15 to-orange-500/5"
+  },
+  {
+    icon: Building2,
+    title: "Enterprise Automation",
+    description: "Streamlining business processes through intelligent automation and document AI.",
+    useCases: [
+      "Document processing and extraction",
+      "Workflow automation",
+      "Intelligent data classification",
+    ],
+    color: "from-violet-500/15 to-purple-500/5"
+  },
+  {
+    icon: Heart,
+    title: "Healthcare",
+    description: "AI solutions for improved diagnostics, patient care, and operational efficiency in healthcare.",
+    useCases: [
+      "Medical image analysis",
+      "Diagnostic assistance systems",
+      "Patient monitoring solutions",
+    ],
+    color: "from-emerald-500/15 to-teal-500/5"
+  },
+  {
+    icon: Factory,
+    title: "Industrial Systems",
+    description: "Smart manufacturing and predictive maintenance solutions for Industry 4.0 operations.",
+    useCases: [
+      "Quality inspection automation",
+      "Predictive maintenance systems",
+      "Process optimization",
+    ],
+    color: "from-amber-500/15 to-yellow-500/5"
+  },
+  {
+    icon: Landmark,
+    title: "Finance & Banking",
+    description: "AI-driven security and fraud prevention for financial services and banking institutions.",
+    useCases: [
+      "Fraud detection systems",
+      "Identity verification",
+      "Risk assessment automation",
+    ],
+    color: "from-indigo-500/15 to-blue-500/5"
+  },
 ];
 
 const philosophy = [
@@ -81,15 +186,22 @@ const philosophy = [
 ];
 
 export default function ProductsPage() {
+  const { theme } = useTheme();
   return (
     <Layout>
       {/* Hero */}
       <section className="relative section-padding overflow-hidden">
-        <div className="absolute inset-0 hero-glow" />
-        <div className="absolute inset-0 mesh-gradient" />
-        <div className="orb w-[500px] h-[500px] bg-violet-500/8 -top-20 -right-20 opacity-50" />
 
-        <div className="section-container relative">
+        {/* Animated Background Graphic */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-40 pointer-events-none z-0">
+          <img
+            src={theme === "dark" ? productsHero : productsHeroLight}
+            alt="AI products abstract"
+            className="w-full max-w-[1200px] object-cover animate-float-slow filter brightness-90 contrast-125 image-blend-aware opacity-60 dark:opacity-90"
+          />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="max-w-3xl">
             <span className="section-label mb-5 block">What We're Building</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 animate-fade-in">
@@ -118,7 +230,6 @@ export default function ProductsPage() {
 
       {/* Product Focus Areas */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/40" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
@@ -132,25 +243,39 @@ export default function ProductsPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {productAreas.map((area, index) => (
-              <div key={index} className="group premium-card gradient-border">
-                <div className="flex items-start justify-between mb-5">
-                  <div className="icon-box-lg">
-                    <area.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${area.statusColor}`}>
-                      {area.status}
-                    </span>
-                  </div>
-                </div>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-base font-bold mb-2">{area.title}</h3>
-                    <p className="text-sm text-muted-foreground">{area.description}</p>
+              <div key={index} className="group premium-card gradient-border flex flex-col">
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${area.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+
+                {/* Visual Area */}
+                <div className="h-40 w-full relative mb-5 rounded-xl overflow-hidden bg-background border border-border/30 group-hover:border-primary/20 transition-colors duration-500">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src={theme === "dark" ? area.image : area.imageLight}
+                      alt={area.title}
+                      className="w-full h-full object-cover filter brightness-90 contrast-125 opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 image-blend-aware"
+                    />
                   </div>
                 </div>
-                <div className="mt-4 text-right">
-                  <span className="text-4xl font-black text-primary/10 group-hover:text-primary/20 transition-colors font-display">
+
+                <div className="relative flex-1">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="icon-box">
+                      <area.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${area.statusColor}`}>
+                        {area.status}
+                      </span>
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold mb-2 text-foreground">{area.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{area.description}</p>
+                </div>
+
+                <div className="mt-4 flex items-end justify-between">
+                  {/* Remove Explore Area links to reduce noise */}
+                  <div className="flex-1" />
+                  <span className="text-3xl font-black text-primary/10 group-hover:text-primary/20 transition-colors font-display">
                     {area.number}
                   </span>
                 </div>
@@ -160,9 +285,63 @@ export default function ProductsPage() {
         </div>
       </section>
 
+      {/* Industries Grid */}
+      <section className="section-padding relative">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+        <div className="section-container relative">
+          <div className="text-center mb-14">
+            <span className="section-label mb-4 block">Sectors We Transform</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries & Use Cases</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              We apply AI expertise across diverse industries, solving unique challenges with tailored solutions.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {industries.map((industry, index) => (
+              <div
+                key={index}
+                className="group relative p-8 rounded-2xl border border-border hover:border-primary/40 bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden"
+              >
+                {/* Gradient overlay on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+
+                <div className="relative">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="flex items-start gap-4">
+                      <div className="icon-box-lg flex-shrink-0">
+                        <industry.icon className="h-7 w-7 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold mb-1">{industry.title}</h3>
+                        <p className="text-sm text-muted-foreground">{industry.description}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Use cases */}
+                  <div className="pt-2">
+                    <h4 className="text-sm font-semibold mb-3">Key Applications</h4>
+                    <ul className="grid gap-2">
+                      {industry.useCases.map((useCase, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-primary flex-shrink-0" />
+                          {useCase}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Product Philosophy */}
       <section className="section-padding relative overflow-hidden">
-        <div className="orb w-[400px] h-[400px] bg-primary/6 top-0 right-0 opacity-50" />
         <div className="section-container relative">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
@@ -190,7 +369,6 @@ export default function ProductsPage() {
 
       {/* CTA */}
       <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 cta-gradient" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
         <div className="section-container relative">

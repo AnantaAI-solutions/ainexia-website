@@ -7,12 +7,11 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
-import TechnologiesPage from "./pages/TechnologiesPage";
 import ProductsPage from "./pages/ProductsPage";
-import IndustriesPage from "./pages/IndustriesPage";
 import CareersPage from "./pages/CareersPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
+import { ScrollToTop } from "./components/layout";
 
 const queryClient = new QueryClient();
 
@@ -23,13 +22,12 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/technologies" element={<TechnologiesPage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/solutions" element={<ProductsPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />

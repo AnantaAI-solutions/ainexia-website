@@ -8,6 +8,21 @@ import {
   Search, Lightbulb, Package, Rocket
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "@/components/ThemeProvider";
+import heroAbstract from "@/assets/graphics/home_hero.png";
+import heroAbstractLight from "@/assets/graphics/home_hero_light.png";
+import cvImage from "@/assets/graphics/computer_vision.png";
+import cvImageLight from "@/assets/graphics/computer_vision_light.png";
+import nlpImage from "@/assets/graphics/nlp_language.png";
+import nlpImageLight from "@/assets/graphics/nlp_language_light.png";
+import speechImage from "@/assets/graphics/speech_audio.png";
+import speechImageLight from "@/assets/graphics/speech_audio_light.png";
+import roboticsImage from "@/assets/graphics/robotics.png";
+import roboticsImageLight from "@/assets/graphics/robotics_light.png";
+import analyticsImage from "@/assets/graphics/predictive_analytics.png";
+import analyticsImageLight from "@/assets/graphics/predictive_analytics_light.png";
+import customImage from "@/assets/graphics/custom_ai_products.png";
+import customImageLight from "@/assets/graphics/custom_ai_products_light.png";
 
 const solutions = [
   {
@@ -15,42 +30,60 @@ const solutions = [
     title: "Computer Vision",
     description: "Object detection, visual inspection, surveillance & autonomous perception systems.",
     tag: "Vision AI",
-    color: "from-blue-500/20 to-cyan-500/10"
+    color: "from-blue-500/20 to-cyan-500/10",
+    image: cvImage,
+    imageLight: cvImageLight,
+    link: "/solutions"
   },
   {
     icon: MessageSquare,
     title: "Natural Language Processing",
     description: "Intelligent chatbots, document understanding, semantic search & text analytics.",
     tag: "Language AI",
-    color: "from-violet-500/20 to-purple-500/10"
+    color: "from-violet-500/20 to-purple-500/10",
+    image: nlpImage,
+    imageLight: nlpImageLight,
+    link: "/solutions"
   },
   {
     icon: AudioLines,
     title: "Speech & Audio Intelligence",
     description: "Voice recognition, real-time transcription, audio classification & sound analytics.",
     tag: "Audio AI",
-    color: "from-emerald-500/20 to-teal-500/10"
+    color: "from-emerald-500/20 to-teal-500/10",
+    image: speechImage,
+    imageLight: speechImageLight,
+    link: "/services"
   },
   {
     icon: Bot,
     title: "Robotics & Automation",
     description: "Sensor fusion, autonomous navigation, intelligent control & edge AI systems.",
     tag: "Robotics AI",
-    color: "from-orange-500/20 to-amber-500/10"
+    color: "from-orange-500/20 to-amber-500/10",
+    image: roboticsImage,
+    imageLight: roboticsImageLight,
+    link: "/solutions"
   },
   {
     icon: Brain,
     title: "Predictive Analytics",
     description: "Demand forecasting, anomaly detection, risk modeling & data-driven decisions.",
     tag: "Analytics AI",
-    color: "from-pink-500/20 to-rose-500/10"
+    color: "from-pink-500/20 to-rose-500/10",
+    image: analyticsImage,
+    imageLight: analyticsImageLight,
+    link: "/services"
   },
   {
     icon: Layers,
     title: "Custom AI Products",
     description: "End-to-end AI product development from concept to deployment at scale.",
     tag: "Product AI",
-    color: "from-indigo-500/20 to-blue-500/10"
+    color: "from-indigo-500/20 to-blue-500/10",
+    image: customImage,
+    imageLight: customImageLight,
+    link: "/services"
   }
 ];
 
@@ -82,15 +115,6 @@ const whyUs = [
     title: "Responsible & Secure AI",
     description: "Privacy-first architecture with bias monitoring, explainability, and compliance."
   }
-];
-
-const industries = [
-  "Healthcare & Life Sciences",
-  "Manufacturing & Industry 4.0",
-  "Education & EdTech",
-  "Finance & Insurance",
-  "Retail & E-Commerce",
-  "Logistics & Supply Chain"
 ];
 
 const processSteps = [
@@ -167,19 +191,25 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 }
 
 export default function HomePage() {
+  const { theme } = useTheme();
+  const currentHeroImage = theme === "dark" ? heroAbstract : heroAbstractLight;
+
   return (
     <Layout>
       {/* ─── Hero ─── */}
       <section className="relative min-h-[90vh] flex items-center py-32 lg:py-40 overflow-hidden">
-        {/* Layered backgrounds */}
-        <div className="absolute inset-0 hero-glow" />
-        <div className="absolute inset-0 mesh-gradient" />
-        {/* Orbs */}
-        <div className="orb w-[600px] h-[600px] bg-primary/8 top-0 -left-40 opacity-60" style={{ animationDuration: "10s" }} />
-        <div className="orb w-[500px] h-[500px] bg-violet-500/6 -bottom-20 -right-40 opacity-60" style={{ animationDuration: "14s", animationDelay: "2s" }} />
-        <div className="orb w-[300px] h-[300px] bg-cyan-400/8 top-1/3 right-1/4 opacity-40" style={{ animationDuration: "8s", animationDelay: "1s" }} />
+        {/* Layered backgrounds (Purged for absolute black theme) */}
 
-        <div className="section-container relative">
+        {/* Animated Background Graphic */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-40 pointer-events-none z-0">
+          <img
+            src={currentHeroImage}
+            alt="AI abstract network"
+            className="w-full max-w-[1200px] object-cover animate-float-slow filter brightness-90 contrast-125 image-blend-aware opacity-60 dark:opacity-90"
+          />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/25 mb-8 animate-fade-in">
@@ -218,8 +248,18 @@ export default function HomePage() {
             </div>
 
             {/* Scroll hint */}
-            <div className="mt-16 flex flex-col items-center gap-2 text-muted-foreground animate-fade-in-delay-3">
-              <span className="text-xs font-medium uppercase tracking-widest">Scroll to explore</span>
+            <div
+              className="mt-16 flex flex-col items-center gap-2 text-muted-foreground animate-fade-in-delay-3 cursor-pointer group hover:text-primary transition-colors"
+              onClick={() => {
+                const statsSection = document.getElementById('stats-section');
+                if (statsSection) {
+                  statsSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' });
+                }
+              }}
+            >
+              <span className="text-xs font-medium uppercase tracking-widest group-hover:tracking-[0.22em] transition-all">Scroll to explore</span>
               <ChevronDown className="h-5 w-5 animate-bounce" />
             </div>
           </div>
@@ -229,7 +269,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── Stats Bar ─── */}
-      <section className="relative -mt-4 z-10">
+      <section id="stats-section" className="relative -mt-4 z-10">
         <div className="section-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 glass-card rounded-2xl p-8 shadow-xl">
             {stats.map((stat, i) => (
@@ -244,7 +284,6 @@ export default function HomePage() {
 
       {/* ─── One-Stop Positioning ─── */}
       <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent" />
         <div className="section-container relative">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -266,7 +305,6 @@ export default function HomePage() {
 
       {/* ─── Solutions Grid ─── */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/40" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
 
@@ -286,21 +324,36 @@ export default function HomePage() {
             {solutions.map((item, index) => (
               <div
                 key={index}
-                className="group premium-card gradient-border cursor-default"
+                className="group premium-card gradient-border flex flex-col overflow-hidden"
               >
                 {/* Gradient background on hover */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                <div className="relative">
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="icon-box-lg">
-                      <item.icon className="h-7 w-7 text-primary" />
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+
+                {/* Animated Visual Area */}
+                <div className="h-48 w-full relative mb-5 rounded-xl overflow-hidden bg-background border border-border/30 group-hover:border-primary/20 transition-colors duration-500">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src={theme === "dark" ? item.image : item.imageLight}
+                      alt={item.title}
+                      className="w-full h-full object-cover filter brightness-90 contrast-125 opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 image-blend-aware"
+                    />
+                  </div>
+                </div>
+
+                <div className="relative flex-1 flex flex-col">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="icon-box">
+                      <item.icon className="h-5 w-5 text-primary" />
                     </div>
                     <span className="tag-badge">{item.tag}</span>
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                  <div className="mt-5 flex items-center gap-1 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                    Learn more <ArrowRight className="h-3.5 w-3.5" />
+                  <h3 className="text-xl font-bold mb-3 text-foreground">{item.title}</h3>
+                  <p className="text-[15px] text-muted-foreground leading-relaxed flex-1">{item.description}</p>
+
+                  <div className="mt-5 flex items-center gap-1.5 text-primary text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Link to={item.link} className="flex items-center gap-1.5 hover:underline">
+                      Learn more <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -320,9 +373,6 @@ export default function HomePage() {
 
       {/* ─── How We Work (Process) ─── */}
       <section className="section-padding relative overflow-hidden">
-        <div className="orb w-[400px] h-[400px] bg-primary/6 top-0 right-0 opacity-50" />
-        <div className="orb w-[300px] h-[300px] bg-violet-500/5 bottom-0 left-10 opacity-40" />
-
         <div className="section-container relative">
           <div className="text-center mb-16">
             <span className="section-label mb-4 block">Our Approach</span>
@@ -355,7 +405,6 @@ export default function HomePage() {
 
       {/* ─── Tech Logos Marquee ─── */}
       <section className="py-12 relative">
-        <div className="absolute inset-0 bg-card/40" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
@@ -379,52 +428,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Industries + Why Us ─── */}
+      {/* ─── Why Us ─── */}
       <section className="section-padding relative overflow-hidden">
         <div className="section-container relative">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <span className="section-label mb-4 block">Industries We Serve</span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-5 text-balance">
-                AI Solutions for Every Industry
-              </h2>
-              <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
-                We understand the unique challenges of your industry and deliver AI solutions
-                tailored to your specific workflows, compliance needs, and growth objectives.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {industries.map((item, index) => (
-                  <li key={index} className="flex items-center gap-4 group">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                      <CheckCircle2 className="h-4 w-4 text-primary" />
-                    </div>
-                    <span className="text-foreground/90 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button variant="heroOutline" asChild>
-                <Link to="/industries" className="group">
-                  See Industry Solutions
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </div>
-
-            {/* Why Us Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {whyUs.map((item, index) => (
-                <div
-                  key={index}
-                  className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                >
-                  <div className="icon-box mb-5">
-                    <item.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="font-bold mb-2 text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+          <div className="text-center mb-16">
+            <span className="section-label mb-4 block">Why Choose Us</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+              The Ainexia Advantage
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              We don't just build, we partner. From full-stack execution to responsible AI integration, we deliver systems engineered for reality.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {whyUs.map((item, index) => (
+              <div
+                key={index}
+                className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <div className="icon-box mb-5">
+                  <item.icon className="h-5 w-5 text-primary" />
                 </div>
-              ))}
-            </div>
+                <h3 className="font-bold mb-2 text-foreground">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -433,7 +461,6 @@ export default function HomePage() {
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 cta-gradient" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-        <div className="orb w-[400px] h-[400px] bg-primary/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60" />
 
         <div className="section-container relative">
           <div className="max-w-3xl mx-auto text-center">

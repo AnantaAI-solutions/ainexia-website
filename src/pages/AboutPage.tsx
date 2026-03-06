@@ -1,7 +1,10 @@
 import { Layout } from "@/components/layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Target, Eye, Heart, Users, ArrowRight, Rocket, Star, Code2 } from "lucide-react";
+import { Rocket, Star, Code2, Target, Eye, Heart, Users, ArrowRight } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+import aboutAbstract from "@/assets/graphics/about_mission.png";
+import aboutAbstractLight from "@/assets/graphics/about_mission_light.png";
 
 const values = [
   {
@@ -32,15 +35,24 @@ const milestones = [
 ];
 
 export default function AboutPage() {
+  const { theme } = useTheme();
+  const currentImage = theme === "dark" ? aboutAbstract : aboutAbstractLight;
+
   return (
     <Layout>
       {/* Hero */}
       <section className="relative section-padding overflow-hidden">
-        <div className="absolute inset-0 hero-glow" />
-        <div className="absolute inset-0 mesh-gradient" />
-        <div className="orb w-[500px] h-[500px] bg-primary/8 -top-20 -right-20 opacity-50" />
 
-        <div className="section-container relative">
+        {/* Animated Background Graphic */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none z-0">
+          <img
+            src={currentImage}
+            alt="AI mission abstract"
+            className={`w-full max-w-[1200px] object-cover animate-float-slow filter brightness-90 contrast-125 ${theme === "dark" ? "mix-blend-screen" : "mix-blend-multiply opacity-70"}`}
+          />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="max-w-4xl">
             <span className="section-label mb-5 block">Who We Are</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 animate-fade-in leading-tight">
@@ -57,7 +69,6 @@ export default function AboutPage() {
 
       {/* Our Story */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/50" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
@@ -106,7 +117,6 @@ export default function AboutPage() {
 
       {/* Journey Timeline */}
       <section className="section-padding relative overflow-hidden">
-        <div className="orb w-[400px] h-[400px] bg-primary/6 top-0 left-0 opacity-40" />
         <div className="section-container relative">
           <div className="text-center mb-14">
             <span className="section-label mb-4 block">Our Journey</span>
@@ -138,7 +148,6 @@ export default function AboutPage() {
 
       {/* Mission & Vision */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/50" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 
@@ -202,7 +211,6 @@ export default function AboutPage() {
 
       {/* Team */}
       <section className="section-padding relative">
-        <div className="absolute inset-0 bg-card/50" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="section-container relative">
           <div className="max-w-2xl mx-auto">
